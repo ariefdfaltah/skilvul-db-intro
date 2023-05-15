@@ -1,68 +1,51 @@
 SELECT version();
 
-CREATE TABLE `user` (
-    `id` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user`(
+    `user_id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NOT NULL DEFAULT '',
     `email` VARCHAR(50) NOT NULL DEFAULT '',
     `password` VARCHAR(50) NOT NULL DEFAULT '',
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`user_id`)
 )
-DESC user;
+desc user;
 
-CREATE TABLE `singer` (
-    `id` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE `singer`(
+    `singer_id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NOT NULL DEFAULT '',
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`singer_id`)
 )
-DESC singer;
+desc singer;
 
-CREATE TABLE `album` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8_general_ci',
-    PRIMARY KEY (`id`) USING BTREE
-)
-DESC album;
-
-CREATE TABLE `track` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `title` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8_general_ci',
-    `singer_id` INT(10) NOT NULL,
+CREATE TABLE `album`(
     `album_id` INT(10) NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `album_id` FOREIGN KEY (`album_id`) 
-        REFERENCES `sql12617704`.`album` (`id`) 
-            ON UPDATE CASCADE 
-            ON DELETE CASCADE,
-    CONSTRAINT `singer_id` FOREIGN KEY (`singer_id`) 
-        REFERENCES `sql12617704`.`singer` (`id`) 
-            ON UPDATE CASCADE 
-            ON DELETE CASCADE    
-)
-DESC track;
-
-CREATE TABLE `playlist` (
-    `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NOT NULL DEFAULT '' COLLATE 'utf8_general_ci',
-    `user_id` INT(10) NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `user_id` FOREIGN KEY (`user_id`) 
-        REFERENCES `sql12617704`.`user` (`id`) 
-            ON UPDATE CASCADE 
-            ON DELETE CASCADE   
+    PRIMARY KEY (`album_id`) USING BTREE
 )
-DESC playlist;
+desc album;
 
-CREATE TABLE `playlist_track` (
-    `playlist_id` INT(10) NOT NULL,
-    `track_id` INT(10) NOT NULL,
-    CONSTRAINT `playlist_id` FOREIGN KEY (`playlist_id`) 
-        REFERENCES `sql12617704`.`playlist` (`id`) 
-            ON UPDATE CASCADE 
-            ON DELETE CASCADE,
-    CONSTRAINT `track_id` FOREIGN KEY (`track_id`) 
-        REFERENCES `sql12617704`.`track` (`id`) 
-            ON UPDATE CASCADE 
-            ON DELETE CASCADE      
+CREATE TABLE `track`(
+    `track_id` INT(10) NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+    `singer` INT(10) NOT NULL,
+    `album` INT(10) NOT NULL,
+    PRIMARY KEY (`track_id`), 
+    CONSTRAINT `album` FOREIGN KEY (`album`) REFERENCES `sql12617712`.`album` (`album_id`) ON UPDATE CASCADE ON DELETE CASCADE, CONSTRAINT `singer` FOREIGN KEY (`singer`) REFERENCES `sql12617712`.`singer` (`singer_id`) ON UPDATE CASCADE ON DELETE CASCADE
 )
-DESC playlist_track;
+desc track;
+
+CREATE TABLE `playlist`(
+    `playlist_id` INT NOT NULL,
+    `name` VARCHAR(50) NOT NULL,
+    `user_id` INT NOT NULL,
+    PRIMARY KEY (`playlist_id`),
+    CONSTRAINT  `user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE ON DELETE CASCADE
+)
+desc playlist;
+
+CREATE TABLE `playlist_track`(
+    `playlist_id` INT NOT NULL,
+    `track_id` INT NOT NULL,
+    CONSTRAINT `playlist` FOREIGN KEY (`playlist_id`) REFERENCES `playlist` (`playlist_id`) ON UPDATE CASCADE ON DELETE CASCADE, CONSTRAINT `track` FOREIGN KEY (`track_id`) REFERENCES `track` (`track_id`) ON UPDATE CASCADE ON DELETE CASCADE
+)
+desc playlist_track;
 

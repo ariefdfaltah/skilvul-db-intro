@@ -1,14 +1,15 @@
-/* INSERT DATA to TABLE user */
-INSERT INTO user (name, email, password) 
-VALUES ('Arief', 'arief@gmail.com', '123');
-INSERT INTO user (name, email, password) 
-VALUES ('Doni', 'doni@gmail.com', '111');
-INSERT INTO user (name, email, password) 
-VALUES ('Agung', 'agung@gmail.com', '221');
-INSERT INTO user (name, email, password) 
-VALUES ('Haris', 'haris@gmail.com', '443');
-INSERT INTO user (name, email, password) 
-VALUES ('Wina', 'wina@gmail.com', '963');
+INSERT version();
+
+INSERT INTO user (user_id, name, email, password) 
+VALUES ('', 'abdurrahman', 'prajurit820@gmail.com', '123');
+INSERT INTO user (user_id, name, email, password) 
+VALUES ('','Al', 'al@gmail.com', '321');
+INSERT INTO user (user_id, name, email, password) 
+VALUES ('', 'Khoodhy', 'khoodhy@gmail.com', '132');
+INSERT INTO user (user_id, name, email, password) 
+VALUES ('', 'antok', 'antok@gmail.com', '312');
+INSERT INTO user (user_id, name, email, password) 
+VALUES ('', 'hermawan', 'hermawan@gmail.com', '231');
 INSERT INTO user (name, email, password) 
 VALUES ('Joko', 'joko@gmail.com', '342');
 INSERT INTO user (name, email, password) 
@@ -21,7 +22,16 @@ INSERT INTO user (name, email, password)
 VALUES ('Anin', 'anin@gmail.com', '900');
 SELECT * FROM user;
 
-/* INSERT DATA to TABLE singer */
+INSERT INTO singer (singer_id, name) 
+VALUES ('', 'afgan');
+INSERT INTO singer (singer_id, name) 
+VALUES ('', 'judika');
+INSERT INTO singer (singer_id, name) 
+VALUES ('', 'bcl');
+INSERT INTO singer (singer_id, name) 
+VALUES ('', 'carli');
+INSERT INTO singer (singer_id, name) 
+VALUES ('', 'bambang');
 INSERT INTO singer (name) 
 VALUES ('Krisdayanti');
 INSERT INTO singer (name) 
@@ -32,136 +42,140 @@ INSERT INTO singer (name)
 VALUES ('Virgoun');
 INSERT INTO singer (name) 
 VALUES ('Bondan Prakoso');
-INSERT INTO singer (name) 
-VALUES ('Sheila on 7');
-INSERT INTO singer (name) 
-VALUES ('Dewa');
-INSERT INTO singer (name) 
-VALUES ('Hindia');
-INSERT INTO singer (name) 
-VALUES ('Ardhito Pramono');
-INSERT INTO singer (name) 
-VALUES ('420');
+
 SELECT * FROM singer;
 
-/* INSERT DATA to TABLE album */
-INSERT INTO album (name) 
-VALUES ('Cahaya');
-INSERT INTO album (name) 
-VALUES ('Musik Hati');
-INSERT INTO album (name) 
-VALUES ('Fabula');
-INSERT INTO album (name) 
-VALUES ('Surat Cinta Untuk Starla');
-INSERT INTO album (name) 
-VALUES ('Si Lumba Lumba');
-INSERT INTO album (name) 
-VALUES ('Berlayar');
-INSERT INTO album (name) 
-VALUES ('Laskar Cinta');
-INSERT INTO album (name) 
-VALUES ('Menari Dengan Bayangan');
-INSERT INTO album (name) 
-VALUES ('Wijayakusuma');
-INSERT INTO album (name) 
-VALUES ('Lelaku');
+INSERT INTO album (album_id, name) 
+VALUES ('1', 'afgan album');
+INSERT INTO album (album_id, name) 
+VALUES ('2', 'judika album');
+INSERT INTO album (album_id, name) 
+VALUES ('3', 'bcl album');
+INSERT INTO album (album_id, name) 
+VALUES ('4', 'st12');
+INSERT INTO album (album_id, name) 
+VALUES ('5', 'Bagindas');
+INSERT INTO album (album_id,name) 
+VALUES ('6','Cahaya');
+INSERT INTO album (album_id,name) 
+VALUES ('7','Musik Hati');
+INSERT INTO album (album_id,name) 
+VALUES ('8','Fabula');
+INSERT INTO album (album_id,name) 
+VALUES ('9','Surat Cinta Untuk Starla');
+INSERT INTO album (album_id,name) 
+VALUES ('10','Si Lumba Lumba');
+
+
 SELECT * FROM album;
 
-/* INSERT DATA to TABLE track */
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Pililah Aku', 1, 1);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Mengenangmu', 1, 1);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Keinginanmu', 1, 1);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Kan Kuikuti', 2, 2);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Bayangkan', 2, 2);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('On And On', 2, 2);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Kisah Sempurna', 3, 3);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Sial', 3, 3);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Bohongi Hati', 3, 3);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Seluruh Nafas Ini', 4, 4);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Surat Cinta Untuk Starla', 4, 4);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Dunia Untukmu', 4, 4);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Si Lumba Lumba', 5, 5);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Komedi Putar', 5, 5);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Aku Suka Makan', 5, 5);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Hari Bersamanya', 6, 6);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Pasti Kubisa', 6, 6);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Hujan Turun', 6, 6);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Hadapi Dengan Senyuman', 7, 7);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Hidup Ini Indah', 7, 7);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Matahari Bintang Bulan', 7, 7);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Membasuh', 8, 8);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Evakuasi', 8, 8);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Jam Makan Siang', 8, 8);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Wijayakusuma', 9, 9);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Mula', 9, 9);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Asmara', 9, 9);
-
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Aku Tenang', 10, 10);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Hitam Putih', 10, 10);
-INSERT INTO track (title, singer_id, album_id) 
-VALUES ('Fana Merah Jambu', 10, 10);
+INSERT INTO track (title, singer, album) 
+VALUES ("Butiran debu", 1, 1);
+INSERT INTO track (title, singer, album) 
+VALUES ("Asmara", 1, 1);
+INSERT INTO track (title, singer, album) 
+VALUES ("Dunia Menolak", 2, 2);
+INSERT INTO track (title, singer, album) 
+VALUES ("Pujaan Hati", 2, 2);
+INSERT INTO track (title, singer, album) 
+VALUES ("Cinta Sejati", 3, 3);
+INSERT INTO track (title, singer, album) 
+VALUES ("Kecewa", 3, 3);
+INSERT INTO track (title, singer, album) 
+VALUES ("Saat Terakhir", 4, 4);
+INSERT INTO track (title, singer, album) 
+VALUES ("Issabela", 4, 4);
+INSERT INTO track (title, singer, album) 
+VALUES ("Empat Mata", 5, 5);
+INSERT INTO track (title, singer, album) 
+VALUES ("Cinta", 5, 5);
 
 SELECT * FROM track;
 
-
-/* INSERT DATA to TABLE playlist */
-INSERT INTO playlist (name, user_id) 
-VALUES ('Driving to Home', 1);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Sambil Mendaki', 2);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Santai Sore', 3);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Semangat Kerja!', 4);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Menuju Magrib', 5);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Senja Senja Senja', 6);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Lagu Buat di Pesawat', 7);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Lagi Kalau Badmood', 8);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Teman Hujan', 9);
-INSERT INTO playlist (name, user_id) 
-VALUES ('Pengiring Tidur', 10);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (1,'Driving to Home', 1);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (2,'Sambil Mendaki', 2);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (3,'Santai Sore', 3);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (4,'Semangat Kerja!', 4);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (5,'Menuju Magrib', 5);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (6,'Senja Senja Senja', 6);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (7,'Lagu Buat di Pesawat', 7);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (8,'Lagi Kalau Badmood', 8);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (9,'Teman Hujan', 9);
+INSERT INTO playlist (playlist_id, name, user_id) 
+VALUES (10,'Pengiring Tidur', 10);
 
 SELECT * FROM playlist;
 
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (1, 1);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (1, 2);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (1, 3);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (2, 5);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (2, 3);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (2, 1);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (3, 8);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (3, 9);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (3, 4);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (4, 7);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (4, 3);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (4, 2);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (5, 1);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (5, 3);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (5, 8);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (6, 2);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (6, 8);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (6, 9);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (7, 4);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (7, 6);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (7, 8);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (8, 1);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (8, 3);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (8, 6);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (9, 2);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (9, 4);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (9, 6);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (10, 8);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (10, 10);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES (10, 2);
+
+SELECT * FROM playlist_track;
+
+desc playlist_track;

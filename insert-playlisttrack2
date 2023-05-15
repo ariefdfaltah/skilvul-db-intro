@@ -1,0 +1,19 @@
+INSERT INTO playlist (playlist_id, name, user_id) VALUES
+(11, 'playlist-musicFootball', 1),
+(12, 'playlist-Dangdut', 2),
+(13, 'playlist-Campuran	', 3);
+SELECT * FROM playlist
+
+
+INSERT INTO playlist_track (playlist_id, track_id)
+VALUES 
+   (11, (SELECT track_id FROM track WHERE singer = 1)),
+   (11, (SELECT track_id FROM track WHERE singer = 2)),
+   (11, (SELECT track_id FROM track WHERE singer = 7)),
+   (12, (SELECT track_id FROM track WHERE singer = 8)),
+   (12, (SELECT track_id FROM track WHERE singer = 9)),
+   (12, (SELECT track_id FROM track WHERE singer = 10)),
+   (13, (SELECT track_id FROM track WHERE singer = 3)),
+   (13, (SELECT track_id FROM track WHERE singer = 5)),
+   (13, (SELECT track_id FROM track WHERE singer = 6))
+   SELECT * FROM playlist_track

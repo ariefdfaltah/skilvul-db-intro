@@ -1,5 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+
+// get config vars
+dotenv.config();
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false}))
@@ -42,8 +47,29 @@ const usersStatic = [
 
 ]
 
+const dataUsers = [
+    {
+        "user_id": 11,
+        "email": "arief@gmail.com",
+        "password": "12345678",
+        "role": "admin",
+    },
+    {
+        "user_id": 12,
+        "email": "arisandi@gmail.com",
+        "password": "abcdefg",
+        "role": "premium",
+    },
+    {
+        "user_id": 13,
+        "email": "dhian@gmail.com",
+        "password": "abcdefg",
+        "role": "basic",
+    }
+]
+
 let checkData = (req,res, next) => {
-    console.log(`Saya Mengecek Data Ini : ${req.body}`)
+    // console.log(`Saya Mengecek Data Ini : ${req.body}`)
     next()
 }
 
@@ -94,6 +120,49 @@ app.delete("/users/:id", (req, res) => {
     usersStatic.splice(req.params.id - 1, 1)
     res.status(204)
     res.send()
+})
+
+app.post("/login", (req, res) => {
+    let email = req.body.email
+    let password = req.body.password
+
+    let response = {}
+    let foundUser = {}
+
+    for(let i=0;i < dataUsers.length; i++) {
+        if(dataUsers[i].email == email) {
+            foundUser = dataUsers[i]
+        }
+    }
+
+    if(Object.keys(foundUser).length == 0) {
+        response = {
+            status: "ERROR",
+            message: "User not Found"
+        }
+        res.status(401).json(response)
+        return
+    }
+
+    if(foundUser.password != password) {
+        response = {
+            status: "ERROR",
+            message: "Combination Email and Password not Match"
+        }
+        res.status(401).json(response)
+        return
+    }
+
+    let jwt_payload = {
+        user_id: foundUser.user_id
+    }
+
+    let access_token = jwt.sign(jwt_payload, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+    response = {
+        status: "SUCCESS",
+        access_token: access_token
+    }
+    res.json(response)
 })
 
 app.listen(port, () => {

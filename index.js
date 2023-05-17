@@ -70,7 +70,8 @@ app.post("/users", (req, res) => {
     let response = {
         id: usersStatic.length + 1,
         name: req.body.name,
-        hobby: req.body.hobby
+        hobby: req.body.hobby,
+        type_data: req.body.type_data
     }
     usersStatic.push(response)
     res.json(response)
@@ -80,12 +81,13 @@ app.put("/users/:id", (req, res) => {
     let incomingUpdateDate = {
         id: req.params.id,
         name: req.body.name,
-        hobby: req.body.hobby
+        hobby: req.body.hobby,
+        type_data: req.body.type_data
     }
+    console.log(incomingUpdateDate.type_data);
     usersStatic[req.params.id - 1] = incomingUpdateDate
 
-    res.json(usersStatic[req.params.id - 1])
-    
+    res.json(incomingUpdateDate)
 })
 
 app.delete("/users/:id", (req, res) => {

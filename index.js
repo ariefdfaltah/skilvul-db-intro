@@ -10,13 +10,34 @@ const usersStatic = [
     {
         id: 1,
         name: "Arief",
-        hobby: "Eat"
+        hobby: "Eat",
+        type_data: "premium"
     },
     {
         id: 2,
         name: "Binto",
-        hobby: "Sleep"
+        hobby: "Sleep",
+        type_data: "basic"
+    },
+    {
+        id: 3,
+        name: "Geri",
+        hobby: "Reading",
+        type_data: "premium"
+    },
+    {
+        id: 4,
+        name: "Popa",
+        hobby: "Cooking",
+        type: "basic"
+    },
+    {
+        id: 5,
+        name: "Panpan",
+        hobby: "Shopping",
+        type_data: "premium"
     }
+
 
 
 ]

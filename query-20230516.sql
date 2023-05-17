@@ -32,3 +32,16 @@ INNER JOIN track
 ON track.id = playlist_track.track_id
 INNER JOIN singer
 ON singer.id = track.singer_id
+
+SELECT 
+SUM(singer.name)
+FROM playlist_track
+INNER JOIN playlist
+ON playlist.id = playlist_track.playlist_id
+INNER JOIN user
+ON user.id = playlist.user_id
+INNER JOIN track
+ON track.id = playlist_track.track_id
+INNER JOIN singer
+ON singer.id = track.singer_id
+WHERE singer.name = "Krisdayanti"

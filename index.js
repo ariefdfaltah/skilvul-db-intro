@@ -110,10 +110,10 @@ app.put("/users/:id", (req, res) => {
         hobby: req.body.hobby,
         type_data: req.body.type_data
     }
+    console.log(incomingUpdateDate.type_data);
     usersStatic[req.params.id - 1] = incomingUpdateDate
 
-    res.json(usersStatic[req.params.id - 1])
-    
+    res.json(incomingUpdateDate)
 })
 
 app.delete("/users/:id", (req, res) => {

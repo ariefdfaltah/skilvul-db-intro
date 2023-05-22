@@ -243,6 +243,35 @@ app.use(checkUser)
 app.post("/companies", async (req, res) => {
     let response = {}
     let code = 200
+    if(req.body.nama == ""|| req.body.nama == undefined) {
+        code = 422
+        response = {
+            status: "SUCCESS",
+            message: "nama cannot be blank"
+        }
+
+    } 
+    if(req.body.nama_pemilik == "" || req.body.nama_pemilik == undefined) {
+        code = 422
+        response = {
+            status: "SUCCESS",
+            message: "nama_pemilik cannot be blank"
+        }
+    } 
+    if(req.body.alamat == "" || req.body.alamat == undefined) {
+        code = 422
+        response = {
+            status: "SUCCESS",
+            message: "alamat cannot be blank"
+        }
+    }
+    if(req.body.jenis_id == "" || req.body.jenis_id == 0 || req.body.jenis_id == undefined) {
+        code = 422
+        response = {
+            status: "SUCCESS",
+            message: "jenis_id cannot be blank"
+        }
+    }
     try {
         const newCompany = await companyModel.create({
             nama: req.body.nama,
@@ -265,7 +294,96 @@ app.post("/companies", async (req, res) => {
     }
     
 
-    res.status(200).json(response)
+    res.status(code).json(response)
+    return
+})
+
+app.delete("/companies/:id", async (req, res) => {
+    let response = {}
+    let code = 200
+    try {
+        const newCompany = await companyModel.create({
+            nama: req.body.nama,
+            nama_pemilik: req.body.nama_pemilik,
+            alamat: req.body.alamat,
+            jenis_id: req.body.jenis_id
+        });
+    
+        response = {
+            status: "SUCCESS",
+            message: "Create Company",
+            data: newCompany
+        }
+    } catch(error) {
+        code = 422
+        response = {
+            status: "ERROR",
+            message: error.parent.sqlMessage
+        }
+    }
+    
+
+    res.status(code).json(response)
+    return
+})
+
+app.put("/companies/:id", async (req, res) => {
+    let response = {}
+    let code = 200
+    if(req.body.nama == ""|| req.body.nama == undefined) {
+        code = 422
+        response = {
+            status: "SUCCESS",
+            message: "nama cannot be blank"
+        }
+
+    } 
+    if(req.body.nama_pemilik == "" || req.body.nama_pemilik == undefined) {
+        code = 422
+        response = {
+            status: "SUCCESS",
+            message: "nama_pemilik cannot be blank"
+        }
+    } 
+    if(req.body.alamat == "" || req.body.alamat == undefined) {
+        code = 422
+        response = {
+            status: "SUCCESS",
+            message: "alamat cannot be blank"
+        }
+    }
+    if(req.body.jenis_id == "" || req.body.jenis_id == 0 || req.body.jenis_id == undefined) {
+        code = 422
+        response = {
+            status: "SUCCESS",
+            message: "jenis_id cannot be blank"
+        }
+    }
+    const companies = await companyModel.findOne({
+        where: {
+            id: req.params.id
+        }
+    });
+
+    if(!companies) {
+        response = {
+            status: "SUCCESS",
+            message: "Data not Found"
+        }
+    } else {
+        companies.nama = req.body.nama
+        companies.nama_pemilik = req.body.nama_pemilik
+        companies.alamat = req.body.alamat
+        companies.jenis_id = req.body.jenis_id
+        companies.save()
+        response = {
+            status: "SUCCESS",
+            message: "Update Company",
+            data: companies
+        }
+    }
+
+    res.status(code).json(response)
     return
 })
 

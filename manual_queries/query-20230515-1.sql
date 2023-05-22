@@ -165,3 +165,78 @@ VALUES ('Pengiring Tidur', 10);
 
 SELECT * FROM playlist;
 
+/* INSERT DATA to TABLE playlist_track */
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('1', 2);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('1', 15);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('1', 21);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('2', 3);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('2', 1);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('2', 19);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('3', 24);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('3', 13);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('3', 11);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('4', 12);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('4', 19);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('4', 30);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('5', 24);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('5', 14);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('5', 25);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('6', 6);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('6', 29);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('6', 21);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('7', 16);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('7', 21);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('7', 24);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('8', 2);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('8', 15);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('8', 21);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('9', 12);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('9', 21);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('9', 4);
+
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('10', 19);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('10', 18);
+INSERT INTO playlist_track (playlist_id, track_id) 
+VALUES ('10', 21);
+
+SELECT * FROM playlist_track;
+
+
+

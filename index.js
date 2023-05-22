@@ -140,17 +140,54 @@ app.get("/companies", async (req, res) => {
 })
 
 app.get("/companies/:id", async (req, res) => {
-
+    let response = {}
     const companies = await companyModel.findAll({
         where: {
             id: req.params.id
         }
     });
-    const response = {
-        status: "SUCCESS",
-        message: "Get Detail Company",
-        data: companies
+
+    if(companies.length == 0) {
+        response = {
+            status: "SUCCESS",
+            message: "Data not Found"
+        }
+    } else {
+        response = {
+            status: "SUCCESS",
+            message: "Get Detail Company",
+            data: companies
+        }
     }
+
+    res.status(200).json(response)
+    return
+})
+
+app.post("/companies", async (req, res) => {
+    let response = {}
+    let code = 200
+    try {
+        const newCompany = await companyModel.create({
+            nama: req.body.nama,
+            nama_pemilik: req.body.nama_pemilik,
+            alamat: req.body.alamat,
+            jenis_id: req.body.jenis_id
+        });
+    
+        response = {
+            status: "SUCCESS",
+            message: "Create Company",
+            data: newCompany
+        }
+    } catch(error) {
+        code = 422
+        response = {
+            status: "ERROR",
+            message: error.parent.sqlMessage
+        }
+    }
+    
 
     res.status(200).json(response)
     return

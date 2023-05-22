@@ -137,9 +137,22 @@ app.get("/companies", async (req, res) => {
     }
 
     res.status(200).json(response)
+})
 
-    // console.log(companyModel)
-    // res.status(200)
+app.get("/companies/:id", async (req, res) => {
+
+    const companies = await companyModel.findAll({
+        where: {
+            id: req.params.id
+        }
+    });
+    const response = {
+        status: "SUCCESS",
+        message: "Get Detail Company",
+        data: companies
+    }
+
+    res.status(200).json(response)
     return
 })
 

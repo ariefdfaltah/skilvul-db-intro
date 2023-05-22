@@ -125,10 +125,18 @@ app.delete("/users/:id", (req, res) => {
 })
 
 app.get("/companies", async (req, res) => {
-    // const companyModel = Company()
-
     const companies = await companyModel.findAll();
-    res.status(200).json(companies)
+    
+    let response = {
+        status: 'SUCCESS',
+        msg: 'Get All Companies',
+        meta: {
+            total: companies.length
+        },
+        data: companies
+    }
+
+    res.status(200).json(response)
 
     // console.log(companyModel)
     // res.status(200)

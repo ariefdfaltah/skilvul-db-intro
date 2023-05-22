@@ -75,6 +75,35 @@ let checkData = (req,res, next) => {
     next()
 }
 
+let checkUser = (req, res, next) => {
+    let response = {}
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+
+    if (token == null) {
+        response = {
+            status: "ERROR",
+            message: "Authorization Failed"
+        }
+        res.status(401).json(response)
+        return
+    }
+
+    jwt.verify(token, process.env.TOKEN_SECRET, (error, user) => {
+        console.log(error)
+        if (error) {
+            response = {
+                status: "ERROR",
+                message: error
+            }
+            res.status(401).json(response)
+            return
+        }
+        req.user = user
+        next()
+  })
+}
+
 app.use(checkData)
 
 app.get("/", (req, res) => {
@@ -165,34 +194,7 @@ app.get("/companies/:id", async (req, res) => {
     return
 })
 
-app.post("/companies", async (req, res) => {
-    let response = {}
-    let code = 200
-    try {
-        const newCompany = await companyModel.create({
-            nama: req.body.nama,
-            nama_pemilik: req.body.nama_pemilik,
-            alamat: req.body.alamat,
-            jenis_id: req.body.jenis_id
-        });
-    
-        response = {
-            status: "SUCCESS",
-            message: "Create Company",
-            data: newCompany
-        }
-    } catch(error) {
-        code = 422
-        response = {
-            status: "ERROR",
-            message: error.parent.sqlMessage
-        }
-    }
-    
 
-    res.status(200).json(response)
-    return
-})
 
 app.post("/login", (req, res) => {
     let email = req.body.email
@@ -235,6 +237,37 @@ app.post("/login", (req, res) => {
         access_token: access_token
     }
     res.json(response)
+})
+
+app.use(checkUser)
+
+app.post("/companies", async (req, res) => {
+    let response = {}
+    let code = 200
+    try {
+        const newCompany = await companyModel.create({
+            nama: req.body.nama,
+            nama_pemilik: req.body.nama_pemilik,
+            alamat: req.body.alamat,
+            jenis_id: req.body.jenis_id
+        });
+    
+        response = {
+            status: "SUCCESS",
+            message: "Create Company",
+            data: newCompany
+        }
+    } catch(error) {
+        code = 422
+        response = {
+            status: "ERROR",
+            message: error.parent.sqlMessage
+        }
+    }
+    
+
+    res.status(200).json(response)
+    return
 })
 
 app.listen(port, () => {

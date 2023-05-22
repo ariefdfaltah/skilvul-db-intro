@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 
+const companyModel = require('./models').company
+
 // get config vars
 dotenv.config();
 
@@ -120,6 +122,39 @@ app.delete("/users/:id", (req, res) => {
     usersStatic.splice(req.params.id - 1, 1)
     res.status(204)
     res.send()
+})
+
+app.get("/companies", async (req, res) => {
+
+    const companies = await companyModel.findAll();
+    const response = {
+        status: "SUCCESS",
+        message: "Get All Company",
+        meta: {
+            total: companies.length
+        },
+        data: companies
+    }
+
+    res.status(200).json(response)
+    return
+})
+
+app.get("/companies/:id", async (req, res) => {
+
+    const companies = await companyModel.findAll({
+        where: {
+            id: req.params.id
+        }
+    });
+    const response = {
+        status: "SUCCESS",
+        message: "Get Detail Company",
+        data: companies
+    }
+
+    res.status(200).json(response)
+    return
 })
 
 app.post("/login", (req, res) => {

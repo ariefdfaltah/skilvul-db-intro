@@ -179,7 +179,7 @@ app.get("/companies/:id", async (req, res) => {
 
     if(companies.length == 0) {
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "Data not Found"
         }
     } else {
@@ -247,7 +247,7 @@ app.post("/companies", async (req, res) => {
     if(req.body.nama == ""|| req.body.nama == undefined) {
         code = 422
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "nama cannot be blank"
         }
 
@@ -255,21 +255,21 @@ app.post("/companies", async (req, res) => {
     if(req.body.nama_pemilik == "" || req.body.nama_pemilik == undefined) {
         code = 422
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "nama_pemilik cannot be blank"
         }
     } 
     if(req.body.alamat == "" || req.body.alamat == undefined) {
         code = 422
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "alamat cannot be blank"
         }
     }
     if(req.body.jenis_id == "" || req.body.jenis_id == 0 || req.body.jenis_id == undefined) {
         code = 422
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "jenis_id cannot be blank"
         }
     }
@@ -303,17 +303,15 @@ app.delete("/companies/:id", async (req, res) => {
     let response = {}
     let code = 200
     try {
-        const newCompany = await companyModel.create({
-            nama: req.body.nama,
-            nama_pemilik: req.body.nama_pemilik,
-            alamat: req.body.alamat,
-            jenis_id: req.body.jenis_id
+        const company = await companyModel.destroy({
+            where: {
+                id: req.params.id
+            }
         });
     
         response = {
             status: "SUCCESS",
-            message: "Create Company",
-            data: newCompany
+            message: "Company has been deleted"
         }
     } catch(error) {
         code = 422
@@ -334,7 +332,7 @@ app.put("/companies/:id", async (req, res) => {
     if(req.body.nama == ""|| req.body.nama == undefined) {
         code = 422
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "nama cannot be blank"
         }
 
@@ -342,21 +340,21 @@ app.put("/companies/:id", async (req, res) => {
     if(req.body.nama_pemilik == "" || req.body.nama_pemilik == undefined) {
         code = 422
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "nama_pemilik cannot be blank"
         }
     } 
     if(req.body.alamat == "" || req.body.alamat == undefined) {
         code = 422
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "alamat cannot be blank"
         }
     }
     if(req.body.jenis_id == "" || req.body.jenis_id == 0 || req.body.jenis_id == undefined) {
         code = 422
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "jenis_id cannot be blank"
         }
     }
@@ -368,7 +366,7 @@ app.put("/companies/:id", async (req, res) => {
 
     if(!companies) {
         response = {
-            status: "SUCCESS",
+            status: "ERROR",
             message: "Data not Found"
         }
     } else {
